@@ -38,7 +38,44 @@ block content
 				input(type="number", min="0", max="10", step="1", value ="5")
 			div.points
 				p Points Left: #{points}
-  
+				
+		div.skills
+			div.weapons
+				input(type="checkbox", name="blades")
+				label Blades
+				input(type="checkbox", name="clubs") 
+				label Clubs
+				input(type="Checkbox", name="spears")
+				label Spears
+				input(type="Checkbox", name="bows")
+				label Bows
+			div.crafting
+				input(type="checkbox", name="carpentry")
+				label Carpentry
+				input(type="checkbox", name="Cooking") 
+				label Cooking
+				input(type="Checkbox", name="blacksmith")
+				label Blacksmithing
+				input(type="Checkbox", name="enchanting")
+				label Enchanting
+			div.social
+				input(type="checkbox", name="speech")
+				label Speech
+				input(type="checkbox", name="bartering") 
+				label Bartering
+				input(type="Checkbox", name="intimidate")
+				label Intimidation
+				input(type="Checkbox", name="lying")
+				label Lying
+			div.intellectual
+				input(type="checkbox", name="spellcraft")
+				label Spellcraft
+				input(type="checkbox", name="research") 
+				label Research
+				input(type="Checkbox", name="study")
+				label Study
+				input(type="Checkbox", name="math")
+				label Mathematics
 		div: button Generate
 		
 
