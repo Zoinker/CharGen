@@ -5,7 +5,7 @@ block content
 	h1= title
 	p Create your fantasy character!
   
-	form(method='post')
+	form(method='post', id="form")
 		div.info
 			span.label Race
 			select
@@ -18,26 +18,26 @@ block content
 			span.label Age
 			input(type="number", min="16", max="50", step="1", value="25")
 			span.label Name
-			input(type="text", value="Chara")
-		div.attrib
+			input(class="name", id="name", type="text", value="Chara")
+		div.attribs
 			span.label Attributes
 			div.str
 				span.label Strength
-				input(type="number", min="0", max="10", step="1", value ="5")
+				input(class="attrib", id="str", type="number", min="1", max="10", step="1", value ="5")
 			div.agi
 				span.label Agility
-				input(type="number", min="0", max="10", step="1", value ="5")
+				input(class="attrib", id="agi" type="number", min="1", max="10", step="1", value ="5")
 			div.cnst
 				span.label Constitution
-				input(type="number", min="0", max="10", step="1", value ="5")
+				input(class="attrib", id="con", type="number", min="1", max="10", step="1", value ="5")
 			div.int
 				span.label Intelligence
-				input(type="number", min="0", max="10", step="1", value ="5")
+				input(class="attrib", id="int", type="number", min="1", max="10", step="1", value ="5")
 			div.char
 				span.label Charisma
-				input(type="number", min="0", max="10", step="1", value ="5")
+				input(class="attrib", id="cha", type="number", min="1", max="10", step="1", value ="5")
 			div.points
-				p Points Left: #{points}
+				p(class="pointsLeft")
 				
 		div.skills
 			div.weapons
@@ -78,6 +78,7 @@ block content
 				label Mathematics
 		div: button Generate
 		
+		script(src='scripts/charGen.js')
 
 	
 	
