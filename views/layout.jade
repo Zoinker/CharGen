@@ -1,7 +1,29 @@
 doctype html
-html
+html(lang="en")
   head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+
     title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
-  body
+
+    link(, rel='stylesheet', href='/bower_components/bootstrap/dist/css/bootstrap.min.css')
+
+    //link(rel='stylesheet', href='/stylesheets/style.css')
+
+body
+  if session && session.user
+    p logged in as
+      span= session.user.name
+  header
+    .left
+      h1= title
+      ul.list-inline
+        li: a(href='/').btn start
+        li: a(href='/login').btn login
+        li: a(href='/logout').btn logout
+        li: a(href='/register').btn register
+  main
     block content
+  script('/bower_components/bootstrap/dist/js/bootstrap.min.js')
+  script('https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js')
