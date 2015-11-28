@@ -110,6 +110,11 @@ block content
                     span.glyphicon.glyphicon-ok(aria-hidden='true')
                     |  Generate
             div.canvasdiv.col-md-4
-                canvas
+                canvas#picture(width="256" height="320")
                     | Your browser does not support the HTML5 canvas tag.
-script(src='scripts/charGen.js')
+
+    script(src='scripts/charGen.js')
+
+    script(src='scripts/imagesPreload.js')
+    script(src='scripts/sprite.js')
+    script(src='scripts/picture.js')
