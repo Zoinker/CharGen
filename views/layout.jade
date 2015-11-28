@@ -8,8 +8,7 @@ html(lang="en")
     title= title
 
     link(, rel='stylesheet', href='/bower_components/bootstrap/dist/css/bootstrap.min.css')
-
-    //link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
 
 body
   if session && session.user
@@ -27,3 +26,4 @@ body
     block content
   script('/bower_components/bootstrap/dist/js/bootstrap.min.js')
   script('https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js')
+
