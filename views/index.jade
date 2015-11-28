@@ -10,20 +10,20 @@ block content
                 div.info
                     div.input-group
                         span#race.input-group-addon Race
-                        select.form-control(aria-describedby="race")
+                        select.form-control(aria-describedby="race", id='crace')
                             each race, i in races
                                 option.btn(value=i) #{race}
                     div.input-group
                         span#gender.input-group-addon Gender
-                        select.form-control(aria-describedby="gender")
+                        select.form-control(aria-describedby="gender", id='cgender')
                             each sex, i in genders
                                 option(value=i) #{sex}
                     div.input-group
                         span#age.input-group-addon Age
-                        input.form-control(type="number", min="16", max="50", step="1", value="25",aria-describedby="age")
+                        input.form-control(type="number", min="16", max="50", step="1", value="25",aria-describedby="age", id='cage')
                     div.input-group
                         span#name.input-group-addon Name
-                        input.form-control(class="name", id="name", type="text", value="name",aria-describedby="name")
+                        input.form-control(class="name", type="text", placeholder="name",aria-describedby="name", id='cname')
                 div.page-header
                     h3 Attributes
                 div.attribs
@@ -61,14 +61,14 @@ block content
                             input(type="checkbox", class="skillz", name="clubs")
                             label Clubs
                         div.col-md-3
-                            input(type="Checkbox", class="skillz", name="spears")
-                            label Spears
+                            input(type="Checkbox", class="skillz", name="brawling")
+                            label Brawling
                         div.col-md-3
                             input(type="Checkbox", class="skillz", name="bows")
                             label Bows
                     div.crafting.row
                         div.col-md-3
-                            input(type="checkbox", class="skillz", name="carpentry", id="test")
+                            input(type="checkbox", class="skillz", name="carpentry")
                             label Carpentry
                         div.col-md-3
                             input(type="checkbox", class="skillz", name="Cooking")
@@ -106,12 +106,16 @@ block content
                             input(type="Checkbox", class="skillz", name="math")
                             label Mathematics
                 div.page-header
-                button.btn.btn-default.btn-lg(type='button')
+                button.btn.btn-default.btn-lg(type='button', id='generate', name='generate')
                     span.glyphicon.glyphicon-ok(aria-hidden='true')
                     |  Generate
             div.canvasdiv.col-md-4
                 canvas#picture(width="256" height="320")
                     | Your browser does not support the HTML5 canvas tag.
+            form.desc.col-md-4
+                div.form-group
+                    label Description
+                    textarea.form-control(name="description", id="description", columns="40", rows="15", readonly="true") Your Destiny has yet to be decided!
 
     script(src='scripts/charGen.js')
 
