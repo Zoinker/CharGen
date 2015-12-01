@@ -207,6 +207,7 @@ var Picture = (function() {
     }
 
     return {
-        init: init
+        init: init,
+		raceChange: raceChange
     };
 })();
