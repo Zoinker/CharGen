@@ -29,7 +29,8 @@ function wallIndex(req, res) {
     };
 
 
-    res.render('chargen', data);
+    //res.render('chargen', data);
+    res.render('wall',data);
   });
 }
 

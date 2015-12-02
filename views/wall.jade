@@ -1,12 +1,14 @@
+extends layout
 include mixins
+
 block content
   h1 Veggur
 
 
- if !items || items.length === 0
-        p Engar færslur!
-        hr
-    else
+  if !items || items.length === 0
+    p Engar færslur!
+    hr
+  else
     each item in items
       h2= item.title
       h3
@@ -14,9 +16,11 @@ block content
         = moment(item.date).format('DD.MM.YYYY HH:mm')
       p= item.text
       hr
-        if form
+
+  if form
     h2 Bæta við færslu
     form(method='post', action='/add')
       each field in form
         +field(field, submitted)
       div.buttons: button Bæta við færslu
+
