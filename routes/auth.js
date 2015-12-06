@@ -22,14 +22,15 @@ module.exports = router;
 
 function createCharGen(req, res){
   var data = { title: 'The Fantasy Character Generator!',
-    "races": ["Human", "Elf", "Orc"],
-    "genders": ["Female", "Male", "Neither"],
+    races: ['Human', 'Elf', 'Orc'],
+    genders: ['Female', 'Male', 'Neither'],
     points: 30};
   res.render('chargen', data);
 }
 
 function createForm(req, res) {
-  var data = { title: 'Create Account for Character Generator', form: form, submitted: false };
+  var data = { title: 'Create Account for Character Generator',
+    form: form, submitted: false };
   res.render('create', data);
 }
 
@@ -70,7 +71,8 @@ function redirectIfLoggedIn(req, res, next) {
 }
 
 function login(req, res) {
-  var data = { title: 'Login for Character Generator', form: form, submitted: false };
+  var data = { title: 'Login for Character Generator',
+    form: form, submitted: false };
   res.render('login', data);
 }
 

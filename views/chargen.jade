@@ -128,8 +128,7 @@ block content
 
     script(src='scripts/picture.js')
     script(src='scripts/charGen.js')
-    div.page-header
-        h2 Here you can write about the Character Generator:
+
     if submitted && errors
         .errors
             ul
@@ -139,13 +138,14 @@ block content
                 if addError
                     li Villa kom upp við að skrá færslu
     if form
+        div.page-header
+            h2 Here you can write about the Character Generator:
         form(method='post', action='/add')
             each field in form
                 +field(field, submitted)
             div.buttons: button.btn.btn-default.btn-lg send
     if !items || items.length === 0
-        p Engar færslur!
-        hr
+
     else
         each item in items
             h2= item.title

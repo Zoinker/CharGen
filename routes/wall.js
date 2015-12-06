@@ -20,8 +20,8 @@ function wallIndex(req, res) {
 
     var data = {
       title: 'The Fantasy Character Generator!',
-      "races": ["Human", "Elf", "Orc"],
-      "genders": ["Female", "Male", "Neither"],
+      races: ['Human', 'Elf', 'Orc'],
+      genders: ['Female', 'Male', 'Neither'],
       points: 30,
       items: items,
       error: error,
