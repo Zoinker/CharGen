@@ -32,13 +32,14 @@ var Generator = (function() {
 
 
 	var pointsLeft;
+	var pointsProgress;
 	var attrib;
 	var description;
-	
+
 	var genButton;
 	var preButton;
 	var delButton;
-	
+
 	var total = 30;
 	var pLeft = 3;
 	var nym;
@@ -50,6 +51,7 @@ var Generator = (function() {
 		form = document.getElementById('form');
 		savedContainer = document.querySelector('div.list-group')
 		pointsLeft = document.querySelector('.pointsLeft');
+		pointsProgress = document.querySelector('.progress');
 		nym = document.querySelector('.name');
 		skills = document.querySelector('div.skills');
 		varName = document.getElementById('cname');
@@ -67,7 +69,7 @@ var Generator = (function() {
 		delButton = document.getElementById('delete');
 		formCalc();
 		charClear();
-		
+
 		varStr.addEventListener('change', formCalc);
 		varAgi.addEventListener('change', formCalc);
 		varCon.addEventListener('change', formCalc);
@@ -77,7 +79,7 @@ var Generator = (function() {
 		genButton.addEventListener('click', generate);
 		preButton.addEventListener('click', preview);
 		delButton.addEventListener('click', deleteItem);
-		
+
 		loadSaved().forEach(addItem);
 	}
 	function formCalc() {
@@ -99,39 +101,40 @@ var Generator = (function() {
 				attTemp[i] = inputs[i].value;
 			}
 			pointsLeft.textContent = "Points Left " + parseInt(pLeft);
+			pointsProgress.value=pointsProgress.max-pLeft;
 		}
     }
-	
+
 	function charClear(){
 		varName.value = '';
 		varRace.value = 0;
 		varGender.value = 0;
 		varAge.value = 25;
-		
+
 		varStr.value = 5;
 		varAgi.value = 5;
 		varCon.value = 5;
 		varInt.value = 5;
 		varCha.value = 5;
-		
+
 		skillCheck();
-		
+
 		var chkBox = skills.getElementsByClassName('skillz');
 		for(var i = 0; i < chkBox.length; i++){
 			skillTemp[i] = false;
 			chkBox[i].checked = false;
 		}
-		
+
 		description.value = "Your Destiny has yet to be decided!";
 	}
-	
+
 	function skillRecover() {
 		var chkBox = skills.getElementsByClassName('skillz');
 		for(var i = 0; i < chkBox.length; i++){
 			chkBox[i].checked = skillTemp[i];
 		}
 	}
-	
+
 	function skillCheck() {
 		var chkBox = skills.getElementsByClassName('skillz');
 		var sCheckedOld = sChecked;
@@ -162,12 +165,12 @@ var Generator = (function() {
 			}
 		}
 	}
-	
+
 	function preview(e){
 		prevs = true;
 		generate(e);
 	}
-	
+
 	function generate(e) {
 		console.log("foo");
 
@@ -181,8 +184,8 @@ var Generator = (function() {
 		{
 			var input = inputs[i];
 			sum -= input.value;
-		}	
-		
+		}
+
 		if(varName.value === ''){
 			valid = false;
 			charString = charString + "\n\nYou have no name. One can not adventure without a name!";
@@ -205,18 +208,45 @@ var Generator = (function() {
 		if(valid === false){
 			charString = "You are not ready for your adventure:" + charString;
 			description.value = charString;
+			prevs = false;
 		}else{
-			/*Todo:
-			Save profile on backend if logged in
-			*/
-			
+
+
+
 			textGen();
-			
+
+
 			if(prevs === false){
 				save(e);
 			}else{prevs = false;}
 		}
-		
+
+
+
+	}
+
+	function post(path, params, method) {
+		method = method || "post"; // Set method to post by default if not specified.
+
+		// The rest of this code assumes you are not using a library.
+		// It can be made less wordy if you use one.
+		var form = document.createElement("form");
+		form.setAttribute("method", method);
+		form.setAttribute("action", path);
+
+		for(var key in params) {
+			if(params.hasOwnProperty(key)) {
+				var hiddenField = document.createElement("input");
+				hiddenField.setAttribute("type", "hidden");
+				hiddenField.setAttribute("name", key);
+				hiddenField.setAttribute("value", params[key]);
+
+				form.appendChild(hiddenField);
+			}
+		}
+
+		document.body.appendChild(form);
+		form.submit();
 	}
 	
 	function textGen() {
@@ -254,7 +284,7 @@ var Generator = (function() {
 		if(strTemp < 5){strString = "You are pretty weak."}else
 		if(strTemp < 7){strString = "Your strength is average."}else
 		if(strTemp < 9){strString = "You are pretty strong."}else
-		{strString = "You are freakishly strong. You could lift a boulder with ease!"};
+		{strString = "You are freakishly strong. You could lift a boulder with ease!"}
 			
 		var agiString;
 		var agiTemp = varAgi.value;
@@ -262,7 +292,7 @@ var Generator = (function() {
 		if(agiTemp < 5){agiString = "You are pretty slow."}else
 		if(agiTemp < 7){agiString = "Your agility is average."}else
 		if(agiTemp < 9){agiString = "You are pretty fast."}else
-		{agiString = "You are as fast as a rabbit. You can run circles around anybody!"};
+		{agiString = "You are as fast as a rabbit. You can run circles around anybody!"}
 			
 		var conString;
 		var conTemp = varCon.value;
@@ -270,7 +300,7 @@ var Generator = (function() {
 		if(conTemp < 5){conString = "You are pretty delicate."}else
 		if(conTemp < 7){conString = "Your constitution is average."}else
 		if(conTemp < 9){conString = "You are pretty tough."}else
-		{conString = "You are as tough as a bull. Nothing can bring you down!"};
+		{conString = "You are as tough as a bull. Nothing can bring you down!"}
 		
 		var intString;
 		var intTemp = varInt.value;
@@ -278,7 +308,7 @@ var Generator = (function() {
 		if(intTemp < 5){intString = "You are pretty dumb."}else
 		if(intTemp < 7){intString = "Your intelligence is average."}else
 		if(intTemp < 9){intString = "You are pretty smart."}else
-		{intString = "You are a true genius. There is no problem you cannot solve with your superior intellect!"};
+		{intString = "You are a true genius. There is no problem you cannot solve with your superior intellect!"}
 			
 		var chaString;
 		var chaTemp = varCha.value;
@@ -286,20 +316,20 @@ var Generator = (function() {
 		if(chaTemp < 5){chaString = "You are pretty antisocial."}else
 		if(chaTemp < 7){chaString = "Your charisma is average."}else
 		if(chaTemp < 9){chaString = "You are pretty social."}else
-		{chaString = "You are a social butterfly. Everyone wants to be your best pal!"};
+		{chaString = "You are a social butterfly. Everyone wants to be your best pal!"}
 			
 		var skillStrings = [];
 		var tempSkills = form.getElementsByClassName('skillz');
 		var checkedPoint = 0;
 		var checkedSkills = [];
-		for(var i = 0; i < tempSkills.length; i++){
+		for(i = 0; i < tempSkills.length; i++){
 			if(tempSkills[i].checked === true){
 				checkedSkills[checkedPoint] = tempSkills[i].name;
 				checkedPoint++;
 			}
 		}
 			
-		for(var i = 0; i < 3; i++){
+		for(i = 0; i < 3; i++){
 			switch(checkedSkills[i]){
 				case "blades":
 					skillStrings[i] = "formidable with a sword";

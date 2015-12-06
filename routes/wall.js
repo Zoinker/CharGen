@@ -29,8 +29,8 @@ function wallIndex(req, res) {
     };
 
 
-    //res.render('chargen', data);
-    res.render('wall',data);
+    res.render('chargen', data);
+    //res.render('wall',data);
   });
 }
 
@@ -39,8 +39,8 @@ function wallPost(req, res) {
 
   var hasErrors = result.hasErrors;
   var processedForm = result.processedForm;
-  
-  var data = { title: 'Bæta við færslu',
+
+  var data = { title: 'Write something ;)',
                form: processedForm,
                submitted: true,
                errors: hasErrors
@@ -57,9 +57,11 @@ function wallPost(req, res) {
         data.hasErrors = true;
         data.addError = true;
         res.render('add', data);
+        //res.render('chargen', data);
       }
     });
   } else {
+    //res.render('chargen', data);
     res.render('add', data);
   }
 }
@@ -73,7 +75,7 @@ var wallPost = [
     required: true,
     validation: [boundLengthValidation(2)],
     valid: false,
-    validationString: 'Færsla þarf að vera a.m.k. tveir stafir'
+    validationString: 'Post must be at least two characters'
   }
 ];
 
