@@ -9,6 +9,6 @@ This is the Character Generator.
 Commandline:
 > NPM install
 > Gulp inspect
-> Node scripts / schema.js (this will erase * everything * and create charts again)
+> Node public/scripts/schema.js (this will erase * everything * and create charts again)
 > NPM start
 

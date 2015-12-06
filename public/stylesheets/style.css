@@ -2,6 +2,10 @@ title {
 
 }
 
+.input-group-addon{
+  min-width: 100px;
+}
+
 canvas {
   display: block;
   margin-left: auto;
