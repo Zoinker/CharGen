@@ -1,16 +1,14 @@
-Thank you for reading me :)
+This is the Character Generator.
 
-<<<<<<< HEAD
-And thank you for reading this branch!
-=======
-<<<<<<< HEAD
-Takk fyrir
-=======
+## Installation
 
-:)(;
+-Set up database in progress
+ (two tables users and wall, like in schema.sql)
+-Configure database in `.env`
 
-Takk takk
->>>>>>> 0651dbc055db9f6bef909560441e8d2fc1a8429e
->>>>>>> refs/remotes/origin/master
+Commandline:
+> NPM install
+> Gulp inspect
+> Node scripts / schema.js (this will erase * everything * and create charts again)
+> NPM start
 
-test test

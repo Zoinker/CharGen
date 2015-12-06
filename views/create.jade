@@ -1,0 +1,19 @@
+extends layout
+include mixins
+
+block content
+
+  if submitted && errors
+    h2 Error
+    .errors
+      ul
+        each field in form
+          if !field.valid && field.validationString
+            li: label(for=field.name)= field.validationString
+
+  form(method='post', action='/create')
+    each field in form
+      +field(field, submitted)
+    div: button create account
+
+p: a(href='/login') go to login

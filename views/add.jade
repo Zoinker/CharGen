@@ -1,0 +1,19 @@
+extends layout
+include mixins
+
+block content
+  if submitted && errors
+    .errors
+      ul
+        each field in form
+          if !field.valid && field.validationString
+            li: label(for=field.name)= field.validationString
+        if addError
+          li Adding error
+
+  form(method='post', action='/add')
+    each field in form
+      +field(field, submitted)
+    div.buttons: button send
+
+  p: a(href='/') Back to the Character Generator
