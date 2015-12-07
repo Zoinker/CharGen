@@ -20,10 +20,10 @@ The page was built using a generated Express page and built upon from there. The
 -Configure database in `.env`
 
 Commandline:
-> NPM install
-> bower install
-> Gulp inspect
-> Node public/scripts/schema.js (this will erase * everything * and create charts again)
-> NPM start
-> open localhost:3000 in your browser (Chrome or Firefox) to view webpage
+* NPM install
+* bower install
+* Gulp inspect
+* Node public/scripts/schema.js (this will erase * everything * and create charts again)
+* NPM start
+* open localhost:3000 in your browser (Chrome or Firefox) to view webpage
 
